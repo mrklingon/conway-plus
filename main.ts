@@ -1,3 +1,13 @@
+function bldNbrs () {
+    neighbors[0] = 1
+    neighbors[1] = -1
+    neighbors[2] = diam
+    neighbors[3] = -1 * diam
+    neighbors[4] = 1 + -1 * diam
+    neighbors[5] = -1 * diam - 1
+    neighbors[6] = diam + 1
+    neighbors[7] = diam - 1
+}
 function cellGen (cell: number, count: number) {
     val = Universe[cell]
     if (count < 2) {
@@ -24,27 +34,27 @@ function cntNbors (num: number) {
 function findCell (num: number, num2: number) {
     total = num + num2
     if (total < 0) {
-        total = total + 25
+        total = total + UNIall
     }
-    if (total > 24) {
-        total = total - 25
+    if (total > unisize) {
+        total = total - UNIall
     }
     return total
 }
 function doGen () {
-    for (let index2 = 0; index2 <= 24; index2++) {
+    for (let index2 = 0; index2 <= unisize; index2++) {
         cellGen(index2, cntNbors(index2))
     }
-    for (let index3 = 0; index3 <= 24; index3++) {
+    for (let index3 = 0; index3 <= unisize; index3++) {
         Universe[index3] = Next[index3]
     }
-    showUni()
     Chk_Extinct()
+    showUni()
 }
 function Chk_Extinct () {
     Pop = 0
-    for (let index = 0; index <= unisize; index++) {
-        if (1 == Universe[index]) {
+    for (let index4 = 0; index4 <= unisize; index4++) {
+        if (1 == Universe[index4]) {
             Pop += 1
         }
     }
@@ -64,12 +74,14 @@ function Chk_Extinct () {
     }
 }
 function showUni () {
-    for (let index4 = 0; index4 <= 24; index4++) {
-        findCoord(index4)
-        if (Universe[index4] == 0) {
-            led.unplot(sx, sy)
-        } else {
-            led.plot(sx, sy)
+    for (let ydex = 0; ydex <= 4; ydex++) {
+        for (let xdex = 0; xdex <= 4; xdex++) {
+            uplace = xdex + ydex * diam
+            if (Universe[uplace] == 0) {
+                led.unplot(xdex, ydex)
+            } else {
+                led.plot(xdex, ydex)
+            }
         }
     }
 }
@@ -110,7 +122,7 @@ input.onButtonPressed(Button.AB, function () {
     showUni()
 })
 input.onButtonPressed(Button.B, function () {
-    for (let index5 = 0; index5 <= 24; index5++) {
+    for (let index5 = 0; index5 <= unisize; index5++) {
         if (8 < randint(0, 10)) {
             Universe[index5] = 1
         }
@@ -121,34 +133,39 @@ input.onGesture(Gesture.Shake, function () {
     Chk_Extinct()
     basic.showString("Pop:")
     basic.showString(convertToText(Pop))
-    showUni()
 })
 function findCoord (num: number) {
-    sy = Math.trunc(num / 5)
-    sx = num % 5
+    sy = Math.trunc(num / diam)
+    sx = num % diam
 }
-let sy = 0
 let sx = 0
+let sy = 0
+let uplace = 0
 let Pop = 0
 let total = 0
 let nxt = 0
 let val = 0
 let Next: number[] = []
-let Universe: number[] = []
 let neighbors: number[] = []
+let Universe: number[] = []
 let pattern = 0
 let tot = 0
+let UNIall = 0
 let unisize = 0
-unisize = 24
+let diam = 0
+diam = 5
+unisize = diam * diam - 1
+UNIall = diam * diam
 tot = 0
 pattern = 0
-neighbors = [-6, -5, -4, -1, 1, 4, 5, 6]
 Universe = [0]
-for (let index = 0; index < 24; index++) {
+neighbors = [0, 0, 0, 0, 0, 0, 0, 0]
+bldNbrs()
+for (let index = 0; index < unisize; index++) {
     Universe.push(0)
 }
-Next = [0]
-for (let index = 0; index < 24; index++) {
+Next = [unisize]
+for (let index = 0; index < unisize; index++) {
     Next.push(0)
 }
 images.createBigImage(`
