@@ -47,11 +47,14 @@ function doGen () {
     }
     froze = 1
     for (let index3 = 0; index3 <= unisize; index3++) {
-        let list: number[] = []
-        if (0 == list[0]) {
-        	
+        if (Next[index3] != Universe[index3]) {
+            froze = 0
         }
         Universe[index3] = Next[index3]
+    }
+    if (1 == froze) {
+        basic.showIcon(IconNames.SmallSquare)
+        music.startMelody(music.builtInMelody(Melodies.PowerDown), MelodyOptions.Once)
     }
     Chk_Extinct()
     showUni()
@@ -111,17 +114,17 @@ input.onButtonPressed(Button.AB, function () {
         setXY(2, 2)
         setXY(3, 2)
     }
+    if (3 == pattern) {
+        setXY(1, 2)
+        setXY(2, 2)
+        setXY(3, 2)
+        setXY(3, 3)
+        setXY(2, 4)
+    }
     if (2 == pattern) {
         for (let index = 0; index <= diam - 1; index++) {
             setXY(2, index)
         }
-    }
-    if (3 == pattern) {
-        Universe[11] = 1
-        Universe[12] = 1
-        Universe[13] = 1
-        Universe[17] = 1
-        Universe[6] = 1
     }
     showUni()
 })
