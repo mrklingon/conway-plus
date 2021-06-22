@@ -45,7 +45,12 @@ function doGen () {
     for (let index2 = 0; index2 <= unisize; index2++) {
         cellGen(index2, cntNbors(index2))
     }
+    froze = 1
     for (let index3 = 0; index3 <= unisize; index3++) {
+        let list: number[] = []
+        if (0 == list[0]) {
+        	
+        }
         Universe[index3] = Next[index3]
     }
     Chk_Extinct()
@@ -149,6 +154,7 @@ let sx = 0
 let sy = 0
 let uplace = 0
 let Pop = 0
+let froze = 0
 let total = 0
 let nxt = 0
 let val = 0
@@ -160,7 +166,7 @@ let tot = 0
 let UNIall = 0
 let unisize = 0
 let diam = 0
-diam = 15
+diam = 9
 unisize = diam * diam - 1
 UNIall = diam * diam
 tot = 0
