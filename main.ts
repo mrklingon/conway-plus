@@ -101,16 +101,14 @@ input.onButtonPressed(Button.AB, function () {
         Universe[22] = 1
     }
     if (1 == pattern) {
-        setXY(2, 1)
+        setXY(1, 2)
         setXY(2, 2)
-        setXY(2, 3)
+        setXY(3, 2)
     }
     if (2 == pattern) {
-        Universe[2] = 1
-        Universe[7] = 1
-        Universe[12] = 1
-        Universe[17] = 1
-        Universe[22] = 1
+        for (let index = 0; index <= diam - 1; index++) {
+            setXY(2, index)
+        }
     }
     if (3 == pattern) {
         Universe[11] = 1
@@ -156,7 +154,7 @@ let tot = 0
 let UNIall = 0
 let unisize = 0
 let diam = 0
-diam = 5
+diam = 15
 unisize = diam * diam - 1
 UNIall = diam * diam
 tot = 0
