@@ -101,9 +101,9 @@ input.onButtonPressed(Button.AB, function () {
         Universe[22] = 1
     }
     if (1 == pattern) {
-        Universe[11] = 1
-        Universe[12] = 1
-        Universe[13] = 1
+        setXY(2, 1)
+        setXY(2, 2)
+        setXY(2, 3)
     }
     if (2 == pattern) {
         Universe[2] = 1
@@ -134,6 +134,9 @@ input.onGesture(Gesture.Shake, function () {
     basic.showString("Pop:")
     basic.showString(convertToText(Pop))
 })
+function setXY (nx: number, ny: number) {
+    Universe[nx + ny * diam] = 1
+}
 function findCoord (num: number) {
     sy = Math.trunc(num / diam)
     sx = num % diam
