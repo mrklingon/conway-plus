@@ -89,16 +89,17 @@ input.onButtonPressed(Button.A, function () {
     doGen()
 })
 input.onButtonPressed(Button.AB, function () {
+    clrUni()
     pattern = 1 + pattern
     if (3 < pattern) {
         pattern = 0
     }
     if (0 == pattern) {
-        Universe[11] = 1
-        Universe[12] = 1
-        Universe[13] = 1
-        Universe[18] = 1
-        Universe[22] = 1
+        setXY(1, 2)
+        setXY(2, 2)
+        setXY(3, 2)
+        setXY(1, 1)
+        setXY(2, 3)
     }
     if (1 == pattern) {
         setXY(1, 2)
@@ -138,6 +139,11 @@ function setXY (nx: number, ny: number) {
 function findCoord (num: number) {
     sy = Math.trunc(num / diam)
     sx = num % diam
+}
+function clrUni () {
+    for (let index = 0; index <= unisize; index++) {
+        Universe[index] = 0
+    }
 }
 let sx = 0
 let sy = 0
