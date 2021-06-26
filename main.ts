@@ -57,7 +57,7 @@ function doGen () {
         music.startMelody(music.builtInMelody(Melodies.PowerDown), MelodyOptions.Once)
     }
     Chk_Extinct()
-    showUni(1, 1)
+    showUni(0, 0)
 }
 function Chk_Extinct () {
     Pop = 0
@@ -126,7 +126,7 @@ input.onButtonPressed(Button.AB, function () {
             setXY(2, index)
         }
     }
-    showUni(0, 1)
+    showUni(0, 0)
 })
 input.onButtonPressed(Button.B, function () {
     for (let index5 = 0; index5 <= unisize; index5++) {
@@ -134,7 +134,26 @@ input.onButtonPressed(Button.B, function () {
             Universe[index5] = 1
         }
     }
-    showUni(1, 1)
+    showUni(0, 0)
+})
+input.onPinPressed(TouchPin.P1, function () {
+    for (let index = 0; index <= 4; index++) {
+        showUni(index, 0)
+        basic.pause(200)
+    }
+    for (let index = 0; index <= 4; index++) {
+        showUni(4, index)
+        basic.pause(200)
+    }
+    for (let index = 0; index <= 4; index++) {
+        showUni(4 - index, 4)
+        basic.pause(200)
+    }
+    for (let index = 0; index <= 4; index++) {
+        showUni(0, 4 - index)
+        basic.pause(200)
+    }
+    showUni(0, 0)
 })
 input.onGesture(Gesture.Shake, function () {
     Chk_Extinct()
