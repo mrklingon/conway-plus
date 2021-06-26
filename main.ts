@@ -122,35 +122,35 @@ input.onButtonPressed(Button.AB, function () {
         setXY(2, 4)
     }
     if (2 == pattern) {
-        for (let index = 0; index <= diam - 1; index++) {
-            setXY(2, index)
+        for (let index5 = 0; index5 <= diam - 1; index5++) {
+            setXY(2, index5)
         }
     }
     showUni(0, 0)
 })
 input.onButtonPressed(Button.B, function () {
-    for (let index5 = 0; index5 <= unisize; index5++) {
+    for (let index52 = 0; index52 <= unisize; index52++) {
         if (8 < randint(0, 10)) {
-            Universe[index5] = 1
+            Universe[index52] = 1
         }
     }
     showUni(0, 0)
 })
 input.onPinPressed(TouchPin.P1, function () {
-    for (let index = 0; index <= 4; index++) {
-        showUni(index, 0)
+    for (let index6 = 0; index6 <= 4; index6++) {
+        showUni(index6, 0)
         basic.pause(200)
     }
-    for (let index = 0; index <= 4; index++) {
-        showUni(4, index)
+    for (let index7 = 0; index7 <= 4; index7++) {
+        showUni(4, index7)
         basic.pause(200)
     }
-    for (let index = 0; index <= 4; index++) {
-        showUni(4 - index, 4)
+    for (let index8 = 0; index8 <= 4; index8++) {
+        showUni(4 - index8, 4)
         basic.pause(200)
     }
-    for (let index = 0; index <= 4; index++) {
-        showUni(0, 4 - index)
+    for (let index9 = 0; index9 <= 4; index9++) {
+        showUni(0, 4 - index9)
         basic.pause(200)
     }
     showUni(0, 0)
@@ -163,13 +163,32 @@ input.onGesture(Gesture.Shake, function () {
 function setXY (nx: number, ny: number) {
     Universe[nx + ny * diam] = 1
 }
+input.onLogoEvent(TouchButtonEvent.Touched, function () {
+    for (let index6 = 0; index6 <= 4; index6++) {
+        showUni(index6, 0)
+        basic.pause(200)
+    }
+    for (let index7 = 0; index7 <= 4; index7++) {
+        showUni(4, index7)
+        basic.pause(200)
+    }
+    for (let index8 = 0; index8 <= 4; index8++) {
+        showUni(4 - index8, 4)
+        basic.pause(200)
+    }
+    for (let index9 = 0; index9 <= 4; index9++) {
+        showUni(0, 4 - index9)
+        basic.pause(200)
+    }
+    showUni(0, 0)
+})
 function findCoord (num: number) {
     sy = Math.trunc(num / diam)
     sx = num % diam
 }
 function clrUni () {
-    for (let index = 0; index <= unisize; index++) {
-        Universe[index] = 0
+    for (let index10 = 0; index10 <= unisize; index10++) {
+        Universe[index10] = 0
     }
 }
 let sx = 0
