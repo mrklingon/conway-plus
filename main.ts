@@ -57,7 +57,7 @@ function doGen () {
         music.startMelody(music.builtInMelody(Melodies.PowerDown), MelodyOptions.Once)
     }
     Chk_Extinct()
-    showUni()
+    showUni(1, 1)
 }
 function Chk_Extinct () {
     Pop = 0
@@ -81,10 +81,10 @@ function Chk_Extinct () {
             `)
     }
 }
-function showUni () {
+function showUni (X1: number, Y2: number) {
     for (let ydex = 0; ydex <= 4; ydex++) {
         for (let xdex = 0; xdex <= 4; xdex++) {
-            uplace = xdex + ydex * diam
+            uplace = X1 + xdex + (Y2 + ydex) * diam
             if (Universe[uplace] == 0) {
                 led.unplot(xdex, ydex)
             } else {
@@ -126,7 +126,7 @@ input.onButtonPressed(Button.AB, function () {
             setXY(2, index)
         }
     }
-    showUni()
+    showUni(0, 1)
 })
 input.onButtonPressed(Button.B, function () {
     for (let index5 = 0; index5 <= unisize; index5++) {
@@ -134,7 +134,7 @@ input.onButtonPressed(Button.B, function () {
             Universe[index5] = 1
         }
     }
-    showUni()
+    showUni(1, 1)
 })
 input.onGesture(Gesture.Shake, function () {
     Chk_Extinct()
