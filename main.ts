@@ -137,20 +137,20 @@ input.onButtonPressed(Button.B, function () {
     showUni(0, 0)
 })
 input.onPinPressed(TouchPin.P1, function () {
-    for (let index6 = 0; index6 <= 4; index6++) {
+    for (let index6 = 0; index6 <= Edge; index6++) {
         showUni(index6, 0)
         basic.pause(200)
     }
-    for (let index7 = 0; index7 <= 4; index7++) {
+    for (let index7 = 0; index7 <= Edge; index7++) {
         showUni(4, index7)
         basic.pause(200)
     }
-    for (let index8 = 0; index8 <= 4; index8++) {
-        showUni(4 - index8, 4)
+    for (let index8 = 0; index8 <= Edge; index8++) {
+        showUni(Edge - index8, 4)
         basic.pause(200)
     }
-    for (let index9 = 0; index9 <= 4; index9++) {
-        showUni(0, 4 - index9)
+    for (let index9 = 0; index9 <= Edge; index9++) {
+        showUni(0, Edge - index9)
         basic.pause(200)
     }
     showUni(0, 0)
@@ -206,8 +206,10 @@ let pattern = 0
 let tot = 0
 let UNIall = 0
 let unisize = 0
+let Edge = 0
 let diam = 0
-diam = 9
+diam = 30
+Edge = 26
 unisize = diam * diam - 1
 UNIall = diam * diam
 tot = 0
