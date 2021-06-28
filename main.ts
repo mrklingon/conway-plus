@@ -39,7 +39,10 @@ function ShowAll () {
         }
         basic.showIcon(IconNames.Yes)
         music.playTone(262, music.beat(BeatFraction.Quarter))
+        index7 = 3 + index7
     }
+    basic.pause(100)
+    showUni(0, 0)
 }
 function findCell (num: number, num2: number) {
     total = num + num2
