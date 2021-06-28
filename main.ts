@@ -31,6 +31,16 @@ function cntNbors (num: number) {
     }
     return tot
 }
+function ShowAll () {
+    for (let index7 = 0; index7 <= Edge; index7++) {
+        for (let index6 = 0; index6 <= Edge; index6++) {
+            showUni(index6, index7)
+            basic.pause(50)
+        }
+        basic.showIcon(IconNames.Yes)
+        music.playTone(262, music.beat(BeatFraction.Quarter))
+    }
+}
 function findCell (num: number, num2: number) {
     total = num + num2
     if (total < 0) {
@@ -137,14 +147,7 @@ input.onButtonPressed(Button.B, function () {
     showUni(0, 0)
 })
 input.onPinPressed(TouchPin.P1, function () {
-    for (let index7 = 0; index7 <= Edge; index7++) {
-        for (let index6 = 0; index6 <= Edge; index6++) {
-            showUni(index6, index7)
-            basic.pause(100)
-        }
-        basic.showIcon(IconNames.Yes)
-        music.playTone(262, music.beat(BeatFraction.Quarter))
-    }
+    ShowAll()
 })
 input.onGesture(Gesture.Shake, function () {
     Chk_Extinct()
@@ -154,20 +157,13 @@ input.onGesture(Gesture.Shake, function () {
 function setXY (nx: number, ny: number) {
     Universe[nx + ny * diam] = 1
 }
+input.onLogoEvent(TouchButtonEvent.Touched, function () {
+    ShowAll()
+})
 function findCoord (num: number) {
     sy = Math.trunc(num / diam)
     sx = num % diam
 }
-input.onLogoEvent(TouchButtonEvent.Pressed, function () {
-    for (let index7 = 0; index7 <= Edge; index7++) {
-        for (let index6 = 0; index6 <= Edge; index6++) {
-            showUni(index6, index7)
-            basic.pause(100)
-        }
-        basic.showIcon(IconNames.Yes)
-        music.playTone(262, music.beat(BeatFraction.Quarter))
-    }
-})
 function clrUni () {
     for (let index10 = 0; index10 <= unisize; index10++) {
         Universe[index10] = 0
@@ -190,7 +186,7 @@ let UNIall = 0
 let unisize = 0
 let Edge = 0
 let diam = 0
-diam = 45
+diam = 21
 Edge = diam - 4
 unisize = diam * diam - 1
 UNIall = diam * diam
